@@ -1,0 +1,50 @@
+.ORIG x3000
+
+; Initialize sum to zero
+LD R0, INITIAL_SUM
+
+; Loop through 10 numbers and add to sum
+LD R1, NUMS
+ADD R0, R0, R1
+ADD R1, R1, #1
+BRz DONE
+ADD R0, R0, R1
+ADD R1, R1, #1
+BRz DONE
+ADD R0, R0, R1
+ADD R1, R1, #1
+BRz DONE
+ADD R0, R0, R1
+ADD R1, R1, #1
+BRz DONE
+ADD R0, R0, R1
+ADD R1, R1, #1
+BRz DONE
+ADD R0, R0, R1
+ADD R1, R1, #1
+BRz DONE
+ADD R0, R0, R1
+ADD R1, R1, #1
+BRz DONE
+ADD R0, R0, R1
+ADD R1, R1, #1
+BRz DONE
+ADD R0, R0, R1
+ADD R1, R1, #1
+BRz DONE
+ADD R0, R0, R1
+
+; Store the sum
+ST R0, SUM_LOCATION
+
+; Halt the machine
+HALT
+
+; Data section
+INITIAL_SUM .FILL #0
+NUMS .FILL x3100
+SUM_LOCATION .FILL x310A
+
+DONE BRnzp DONE ; infinite loop
+
+.END

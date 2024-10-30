@@ -1,0 +1,44 @@
+.ORIG x3000
+
+; Load the first number into the accumulator
+LEA R1, TEN_NUMBERS
+
+; Initialize the sum to zero
+AND R2, R2, #0
+
+; Initialize the loop counter to 10
+LD R3, COUNT
+
+; Loop through the ten numbers and add them to the sum
+ADD_LOOP LDR R4, R1, #0
+ADD R2, R2, R4
+ADD R1, R1, #1
+ADD R3, R3, #-1
+BRnzp ADD_LOOP
+
+; Store the sum at memory location x310A
+LEA R0, SUM
+STR R2, R0, #0
+
+; Halt the program
+HALT
+
+; Define the ten numbers in memory locations x3100 to x3109
+TEN_NUMBERS .FILL x3100
+.FILL x3101
+.FILL x3102
+.FILL x3103
+.FILL x3104
+.FILL x3105
+.FILL x3106
+.FILL x3107
+.FILL x3108
+.FILL x3109
+
+; Define the memory location for the sum
+SUM .FILL x310A
+
+; Define the loop counter
+COUNT .FILL #10
+
+.END
